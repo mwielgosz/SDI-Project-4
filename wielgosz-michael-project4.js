@@ -5,40 +5,64 @@
 // Project 4
 // Library Functions
 
+// Global Variables
+var telephoneNumberReturn,
+    emailAddressReturn,
+    urlReturn,
+    capitalizeStringReturn,
+    stringReplacementReturn,
+    numDecimalsReturn,
+    fuzzyMatchReturn,
+    timeDifferenceReturn,
+    stringAsIntegerReturn,
+    highestArrayNumberReturn,
+    totalNumbersInArrayReturn,
+    objectsByKeyReturn;
 
 //String Functions
 
 
 // Function to determine if String is in telephons number format: "123-456-789"
-var isTelephoneNumber = function(input) {
-    var patternCorrect = false;
-    
+var isTelephoneNumber = function(strValue) {
+    var patternCorrect = false,
+    hyphen = "-",
+    index = 0;
+
+    index = strValue.indexOf(hyphen);
+
+    if (index === 3) {
+            index = strValue.lastIndexOf(hyphen);
+            if (index === 7 && strValue.length === 12) {
+                patternCorrect = true;
+            }
+    }
+
     return patternCorrect;
 }
 
 // Function to determine is String is in email address format: "email@address.com"
-var isEmailAddress = function(input) {
+var isEmailAddress = function(strValue) {
     var patternCorrect = false;
     
     return patternCorrect;
 }
 
 // Function to determine if String is in URL format: "http://" or "https://"
-var isURL = function(input) {
+var isURL = function(strValue) {
     var patternCorrect = false;
     
     return patternCorrect;
 }
 
 // Function to capitalize each word in String
-var capitalizeString = function(input) {
+var capitalizeString = function(strValue) {
     var finalString = "";
     
     return finalString;
 }
 
 // Function to replace String seperators: "a,b,c" "a/b/c"
-var refactorStringWithReplacement = function(string, initialSeperator, returnSeperator) {
+var refactorStringWithReplacement = function(strValue, initialSeperator, returnSeperator) {
     var finalString = ""
     
     return finalString;
@@ -48,7 +72,7 @@ var refactorStringWithReplacement = function(string, initialSeperator, returnSep
 // Number Functions
 
 // Function to return Float with X number of decimal places
-var refactorNumberDecimals = function(number, numDecimals) {
+var refactorNumberDecimals = function(numValue, numDecimals) {
     var returnFloat = 0.0;
     
     return returnFloat;
@@ -68,7 +92,7 @@ var getTimeDifference = function(firstData, secondData, hoursOrDays) {
 }
 
 // Function to return a String number as Number
-var getStringAsInteger = function(stringNumber) {
+var getStringAsInteger = function(strValue) {
     var isNumber = false,
         number = 0;
         
@@ -78,14 +102,14 @@ var getStringAsInteger = function(stringNumber) {
 // Array Functions
 
 // Function to get the next largest number in an array as determined by the input
-var getHighestArrayNumber = function(numArray, highestNum) {
+var getHighestArrayNumber = function(argArray, highestNum) {
     var returnNumber = 0;
     
     return returnNumber;
 }
 
 // Function to get the total number of Numbers in a given array
-var getTotalNumbersInArray = function(array) {
+var getTotalNumbersInArray = function(argArray) {
     var totalNumbers = 0;
     
     return totalNumbers;
@@ -97,3 +121,12 @@ var getObjectsByKey = function(objectAray, key) {
 
     return returnArray;
 }
+
+
+// Main Code
+
+// isTelephoneNumber(input)
+telephoneNumberReturn = isTelephoneNumber("123-456-7890");
+console.log("Valid telephone number: " + telephoneNumberReturn);
+telephoneNumberReturn = isTelephoneNumber("11-45454-349383-339");
+console.log("Valid telephone number: " + telephoneNumberReturn);
