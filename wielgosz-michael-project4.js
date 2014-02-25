@@ -91,7 +91,7 @@ var capitalizeString = function(strValue) {     // MAKEUP: nested loops, deliver
 };
 
 // Function to replace String seperators: "a,b,c" "a/b/c"
-var refactorStringWithReplacement = function(strValue, seperator, replacementSeperator) {
+var refactorStringWithReplacement = function(strValue, seperator, replacementSeperator) {   // MAKEUP: missing "var" on loop iterator, deliverable 2
     var finalString = "";
 
     for(var i=0; i < strValue.length; i++) {
