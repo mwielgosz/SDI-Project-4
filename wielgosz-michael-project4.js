@@ -65,9 +65,17 @@ var capitalizeString = function(strValue) {
 };
 
 // Function to replace String seperators: "a,b,c" "a/b/c"
-var refactorStringWithReplacement = function(strValue, initialSeperator, returnSeperator) {
-    var finalString = ""
-    
+var refactorStringWithReplacement = function(strValue, seperator, replacementSeperator) {
+    var finalString = "";
+
+    for(var i=0; i < strValue.length; i++) {
+        if (strValue[i] === seperator) {
+            finalString = finalString + replacementSeperator;
+        } else {
+            finalString = finalString + strValue[i];
+        }
+    }
+
     return finalString;
 };
 
@@ -128,7 +136,7 @@ var getObjectsByKey = function(objectAray, key) {
 
 // Main Code
 
-// isTelephoneNumber(input)
+// isTelephoneNumber(strValue)
 telephoneNumberReturn = isTelephoneNumber("123-456-7890");
 console.log("Valid telephone number: " + telephoneNumberReturn);
 telephoneNumberReturn = isTelephoneNumber("11-45454-349383-339");
@@ -136,10 +144,18 @@ console.log("Valid telephone number: " + telephoneNumberReturn);
 
 
 
-// isURL
+// isURL(strValue)
 urlReturn = isURL("http://google.com");
 console.log("Valid URL: " + urlReturn);
 urlReturn = isURL("https://fullsail.com");
 console.log("Valid URL: " + urlReturn);
 urlReturn = isURL("www.google");
 console.log("Valid URL: " + urlReturn);
+
+
+
+// refactorStringWithReplacement(strValue, initialSeperator, replacementSeperator)
+stringReplacementReturn = refactorStringWithReplacement("soda,water,juice", ",", " ");
+console.log(stringReplacementReturn);
+stringReplacementReturn = refactorStringWithReplacement("insecets mammals fish bacteria", " ", "/");
+console.log(stringReplacementReturn);
