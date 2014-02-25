@@ -11,7 +11,7 @@ var telephoneNumberReturn,
     urlReturn,
     capitalizeStringReturn,
     stringReplacementReturn,
-    numDecimalsReturn,
+    refactorNumberDecimals,
     fuzzyMatchReturn,
     timeDifferenceReturn,
     stringAsIntegerReturn,
@@ -110,9 +110,10 @@ var refactorStringWithReplacement = function(strValue, seperator, replacementSep
 
 // Function to return Float with X number of decimal places
 var refactorNumberDecimals = function(numValue, numDecimals) {
-    var returnFloat = 0.0;
-    
-    return returnFloat;
+
+    numValue = numValue.toFixed(numDecimals);
+
+    return numValue;
 };
 
 // Function to determine if first number is greater than second and if third is within the first and second
@@ -163,18 +164,21 @@ var getObjectsByKey = function(objectAray, key) {
 // Main Code
 
 // isTelephoneNumber(strValue)
+console.log("isTelephoneNumber Function:");
 telephoneNumberReturn = isTelephoneNumber("123-456-7890");
 console.log("Valid telephone number: " + telephoneNumberReturn);
 telephoneNumberReturn = isTelephoneNumber("11-45454-349383-339");
 console.log("Valid telephone number: " + telephoneNumberReturn);
 
 //isEmailAddress(strValue)
+console.log("\nisEmailAddress Function:");
 emailAddressReturn = isEmailAddress("email@address.com");
 console.log("Valid email address: " + emailAddressReturn);
 emailAddressReturn = isEmailAddress("email@addresscom");
 console.log("Valid email address: " + emailAddressReturn);
 
 // isURL(strValue)
+console.log("\nisURL Function:");
 urlReturn = isURL("http://google.com");
 console.log("Valid URL: " + urlReturn);
 urlReturn = isURL("https://fullsail.com");
@@ -183,11 +187,18 @@ urlReturn = isURL("www.google");
 console.log("Valid URL: " + urlReturn);
 
 // toUpperCase(strValue)
+console.log("\ntoUpperCase Function:");
 capitalizeStringReturn = capitalizeString("full sail university");
 console.log("String Capitalized: " + capitalizeStringReturn)
 
 // refactorStringWithReplacement(strValue, initialSeperator, replacementSeperator)
+console.log("\nstringReplacementReturn Function:");
 stringReplacementReturn = refactorStringWithReplacement("Refactored with replacement: " + "soda,water,juice", ",", " ");
 console.log(stringReplacementReturn);
 stringReplacementReturn = refactorStringWithReplacement("Refactored with replacement: " + "insecets mammals fish bacteria", " ", "/");
 console.log(stringReplacementReturn);
+
+// refactorNumberDecimals(numValue, numDecimals)
+console.log("\nrefactorNumberDecimals Function:");
+refactorNumberDecimalsReturn = refactorNumberDecimals(1.23456789, 3);
+console.log("Refactored decimal number: " + refactorNumberDecimalsReturn);
