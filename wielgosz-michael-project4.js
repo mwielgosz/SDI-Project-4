@@ -33,8 +33,8 @@ var isTelephoneNumber = function(strValue) {
             index = strValue.lastIndexOf(hyphen);
             if (index === 7 && strValue.length === 12) {
                 return true;
-            };
-    };
+            }
+    }
 
     return false;
 };
@@ -57,15 +57,36 @@ var isURL = function(strValue) {
 
     if (strValue.substring(0, 7) === "http://" || strValue.substring(0, 8) === "https://") {
         return true;
-    };
+    }
 
     return false;
 };
 
 // Function to capitalize each word in String
-var capitalizeString = function(strValue) {
-    var finalString = "";
-    
+var capitalizeString = function(strValue) {     // MAKEUP: nested loops, deliverable 3
+    var finalString = "",
+    wordArray = strValue.split(" ")
+    letterArray = [];
+
+    for (var i=0; i < wordArray.length; i++) {
+        // Split word into array, each index containing a single letter
+        letterArray = wordArray[i].split("");
+
+        for (var i2=0; i2 < letterArray.length; i2++){
+            if (i2 === 0) {
+                // If first letter of word, capitalize letter
+                letterArray[i2] = letterArray[i2].charAt(0).toUpperCase();
+            }
+
+            // Rebuild word by adding each letter to string
+            finalString += letterArray[i2];
+        }
+
+        // If not last word, add space at end of each word
+        if (i < (wordArray.length -1)) {
+            finalString += " ";
+        }
+    }
     return finalString;
 };
 
@@ -161,10 +182,12 @@ console.log("Valid URL: " + urlReturn);
 urlReturn = isURL("www.google");
 console.log("Valid URL: " + urlReturn);
 
-
+// toUpperCase(strValue)
+capitalizeStringReturn = capitalizeString("full sail university");
+console.log("String Capitalized: " + capitalizeStringReturn)
 
 // refactorStringWithReplacement(strValue, initialSeperator, replacementSeperator)
-stringReplacementReturn = refactorStringWithReplacement("soda,water,juice", ",", " ");
+stringReplacementReturn = refactorStringWithReplacement("Refactored with replacement: " + "soda,water,juice", ",", " ");
 console.log(stringReplacementReturn);
-stringReplacementReturn = refactorStringWithReplacement("insecets mammals fish bacteria", " ", "/");
+stringReplacementReturn = refactorStringWithReplacement("Refactored with replacement: " + "insecets mammals fish bacteria", " ", "/");
 console.log(stringReplacementReturn);
