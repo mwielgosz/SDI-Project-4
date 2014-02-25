@@ -24,8 +24,7 @@ var telephoneNumberReturn,
 
 // Function to determine if String is in telephons number format: "123-456-789"
 var isTelephoneNumber = function(strValue) {
-    var patternCorrect = false,
-    hyphen = "-",
+    var hyphen = "-",
     index = 0;
 
     index = strValue.indexOf(hyphen);
@@ -33,18 +32,24 @@ var isTelephoneNumber = function(strValue) {
     if (index === 3) {
             index = strValue.lastIndexOf(hyphen);
             if (index === 7 && strValue.length === 12) {
-                patternCorrect = true;
+                return true;
             };
     };
 
-    return patternCorrect;
+    return false;
 };
 
 // Function to determine is String is in email address format: "email@address.com"
 var isEmailAddress = function(strValue) {
-    var patternCorrect = false;
-    
-    return patternCorrect;
+    var atIndex = strValue.indexOf("@", 1)
+        dotIndex = strValue.lastIndexOf(".");
+
+    if (atIndex != -1 && dotIndex != -1) {
+        if (atIndex < (dotIndex -1) && (dotIndex + 1) < strValue.length) {
+            return true;
+        }
+    }
+    return false;
 };
 
 // Function to determine if String is in URL format: "http://" or "https://"
@@ -142,7 +147,11 @@ console.log("Valid telephone number: " + telephoneNumberReturn);
 telephoneNumberReturn = isTelephoneNumber("11-45454-349383-339");
 console.log("Valid telephone number: " + telephoneNumberReturn);
 
-
+//isEmailAddress(strValue)
+emailAddressReturn = isEmailAddress("email@address.com");
+console.log("Valid email address: " + emailAddressReturn);
+emailAddressReturn = isEmailAddress("email@addresscom");
+console.log("Valid email address: " + emailAddressReturn);
 
 // isURL(strValue)
 urlReturn = isURL("http://google.com");
