@@ -47,10 +47,10 @@ var isEmailAddress = function(strValue) {
     return patternCorrect;
 };
 
-// Function to determine if String is in URL format: "http://" or "https://" (Only compatible with Firefox)
+// Function to determine if String is in URL format: "http://" or "https://"
 var isURL = function(strValue) {
 
-    if (strValue.startsWith("http://") || strValue.startsWith("https://")) {
+    if (strValue.substring(0, 7) === "http://" || strValue.substring(0, 8) === "https://") {
         return true;
     };
 
