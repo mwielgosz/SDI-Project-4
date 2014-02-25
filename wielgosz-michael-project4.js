@@ -34,39 +34,42 @@ var isTelephoneNumber = function(strValue) {
             index = strValue.lastIndexOf(hyphen);
             if (index === 7 && strValue.length === 12) {
                 patternCorrect = true;
-            }
-    }
+            };
+    };
 
     return patternCorrect;
-}
+};
 
 // Function to determine is String is in email address format: "email@address.com"
 var isEmailAddress = function(strValue) {
     var patternCorrect = false;
     
     return patternCorrect;
-}
+};
 
-// Function to determine if String is in URL format: "http://" or "https://"
+// Function to determine if String is in URL format: "http://" or "https://" (Only compatible with Firefox)
 var isURL = function(strValue) {
-    var patternCorrect = false;
-    
-    return patternCorrect;
-}
+
+    if (strValue.startsWith("http://") || strValue.startsWith("https://")) {
+        return true;
+    };
+
+    return false;
+};
 
 // Function to capitalize each word in String
 var capitalizeString = function(strValue) {
     var finalString = "";
     
     return finalString;
-}
+};
 
 // Function to replace String seperators: "a,b,c" "a/b/c"
 var refactorStringWithReplacement = function(strValue, initialSeperator, returnSeperator) {
     var finalString = ""
     
     return finalString;
-}
+};
 
 
 // Number Functions
@@ -76,12 +79,12 @@ var refactorNumberDecimals = function(numValue, numDecimals) {
     var returnFloat = 0.0;
     
     return returnFloat;
-}
+};
 
 // Function to determine if first number is greater than second and if third is within the first and second
 var percentageFuzzyMatch = function(firstNum, secondNum, thirdNum) {
     
-}
+};
 
 
 // Function to get the difference in time and return values in hours or days
@@ -89,7 +92,7 @@ var getTimeDifference = function(firstData, secondData, hoursOrDays) {
     var returnTime = "";
     
     return returnTime;
-}
+};
 
 // Function to return a String number as Number
 var getStringAsInteger = function(strValue) {
@@ -97,7 +100,7 @@ var getStringAsInteger = function(strValue) {
         number = 0;
         
     return number;
-}
+};
 
 // Array Functions
 
@@ -106,21 +109,21 @@ var getHighestArrayNumber = function(argArray, highestNum) {
     var returnNumber = 0;
     
     return returnNumber;
-}
+};
 
 // Function to get the total number of Numbers in a given array
 var getTotalNumbersInArray = function(argArray) {
     var totalNumbers = 0;
     
     return totalNumbers;
-}
+};
 
 // Function to return the Objects in an array determined by a given key
 var getObjectsByKey = function(objectAray, key) {
     var returnArray = [];
 
     return returnArray;
-}
+};
 
 
 // Main Code
@@ -130,3 +133,13 @@ telephoneNumberReturn = isTelephoneNumber("123-456-7890");
 console.log("Valid telephone number: " + telephoneNumberReturn);
 telephoneNumberReturn = isTelephoneNumber("11-45454-349383-339");
 console.log("Valid telephone number: " + telephoneNumberReturn);
+
+
+
+// isURL
+urlReturn = isURL("http://google.com");
+console.log("Valid URL: " + urlReturn);
+urlReturn = isURL("https://fullsail.com");
+console.log("Valid URL: " + urlReturn);
+urlReturn = isURL("www.google");
+console.log("Valid URL: " + urlReturn);
