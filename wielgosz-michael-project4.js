@@ -25,9 +25,7 @@ var telephoneNumberReturn,
 // Function to determine if String is in telephons number format: "123-456-789"
 var isTelephoneNumber = function(strValue) {
     var hyphen = "-",
-    index = 0;
-
-    index = strValue.indexOf(hyphen);
+        index = strValue.indexOf(hyphen);
 
     if (index === 3) {
             index = strValue.lastIndexOf(hyphen);
