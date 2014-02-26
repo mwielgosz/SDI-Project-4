@@ -15,7 +15,7 @@ var telephoneNumberReturn,
     percentageFuzzyMatchReturn,
     timeDifferenceReturn,
     stringAsIntegerReturn,
-    highestArrayNumberReturn,
+    nextHighestArrayNumberReturn,
     totalNumbersInArrayReturn,
     objectsByKeyReturn;
 
@@ -160,9 +160,16 @@ var getStringAsInteger = function(strValue) {
 // Array Functions
 
 // Function to get the next largest number in an array as determined by the input
-var getHighestArrayNumber = function(argArray, highestNum) {
+var getNextHighestArrayNumber = function(argArray, highestNum) {
     var returnNumber = 0;
-    
+
+    for(var i=0; i < argArray.length; i++) {
+        if (argArray[i] > highestNum) {
+            returnNumber = argArray[i];
+            break;
+        }
+    }
+
     return returnNumber;
 };
 
@@ -231,3 +238,10 @@ percentageFuzzyMatchReturn = percentageFuzzyMatch(488, 245, 200);
 console.log(percentageFuzzyMatchReturn);
 percentageFuzzyMatchReturn = percentageFuzzyMatch(50, 50, 25);
 console.log(percentageFuzzyMatchReturn);
+
+
+
+// getNextHighestArrayNumber(argArray, highestNum)
+console.log("\ngetNextHighestArrayNumber Function:");
+nextHighestArrayNumberReturn = getNextHighestArrayNumber([0, 2, 4, 7, 9, 14, 15, 22, 25, 30], 10);
+console.log("The next highest number in the provided array is: " + nextHighestArrayNumberReturn);
