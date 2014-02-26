@@ -12,7 +12,7 @@ var telephoneNumberReturn,
     capitalizeStringReturn,
     stringReplacementReturn,
     refactorNumberDecimals,
-    fuzzyMatchReturn,
+    percentageFuzzyMatchReturn,
     timeDifferenceReturn,
     stringAsIntegerReturn,
     highestArrayNumberReturn,
@@ -117,8 +117,28 @@ var refactorNumberDecimals = function(numValue, numDecimals) {
 };
 
 // Function to determine if first number is greater than second and if third is within the first and second
-var percentageFuzzyMatch = function(firstNum, secondNum, thirdNum) {
-    
+var percentageFuzzyMatch = function(firstNum, secondNum, percentage) {
+    var comparisonString = "",
+        comparison = 0.0;
+
+    // Get the percentage of the second number
+    comparison = secondNum * (percentage / 100);
+
+    if (firstNum > secondNum) {
+        comparisonString = firstNum + " is greater than " + secondNum;
+    } else if (firstNum < secondNum) {
+        comparisonString = firstNum + " is less than " + secondNum;
+    } else {
+        comparisonString = firstNum + " is equal to " + secondNum;
+    }
+
+    if (firstNum <= comparison) {
+        comparisonString += " and is within "+ percentage + "% of " + secondNum + ", which is " + comparison;
+    } else {
+        comparisonString += " and is not within "+ percentage + "% of " + secondNum + ", which is " + comparison;
+    }
+
+    return comparisonString;
 };
 
 
@@ -202,3 +222,12 @@ console.log(stringReplacementReturn);
 console.log("\nrefactorNumberDecimals Function:");
 refactorNumberDecimalsReturn = refactorNumberDecimals(1.23456789, 3);
 console.log("Refactored decimal number: " + refactorNumberDecimalsReturn);
+
+// percentageFuzzyMatch(firstNum, secondNum, percentage)
+console.log("\n percentageFuzzyMatch Function:");
+percentageFuzzyMatchReturn = percentageFuzzyMatch(5, 10, 50);
+console.log(percentageFuzzyMatchReturn);
+percentageFuzzyMatchReturn = percentageFuzzyMatch(488, 245, 200);
+console.log(percentageFuzzyMatchReturn);
+percentageFuzzyMatchReturn = percentageFuzzyMatch(50, 50, 25);
+console.log(percentageFuzzyMatchReturn);
