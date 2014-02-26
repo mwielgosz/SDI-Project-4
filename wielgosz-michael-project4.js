@@ -28,10 +28,11 @@ var isTelephoneNumber = function(strValue) {
         index = strValue.indexOf(hyphen);
 
     if (index === 3) {
-            index = strValue.lastIndexOf(hyphen);
-            if (index === 7 && strValue.length === 12) {
-                return true;
-            }
+        index = strValue.lastIndexOf(hyphen);
+
+        if (index === 7 && strValue.length === 12) {
+            return true;
+        }
     }
 
     return false;
@@ -39,7 +40,7 @@ var isTelephoneNumber = function(strValue) {
 
 // Function to determine is String is in email address format: "email@address.com"
 var isEmailAddress = function(strValue) {
-    var atIndex = strValue.indexOf("@", 1)
+    var atIndex = strValue.indexOf("@", 1),
         dotIndex = strValue.lastIndexOf(".");
 
     if (atIndex != -1 && dotIndex != -1) {
@@ -63,8 +64,8 @@ var isURL = function(strValue) {
 // Function to capitalize each word in String
 var capitalizeString = function(strValue) {     // MAKEUP: nested loops, deliverable 3
     var finalString = "",
-    wordArray = strValue.split(" ")
-    letterArray = [];
+        wordArray = strValue.split(" "),
+        letterArray = [];
 
     for (var i=0; i < wordArray.length; i++) {
         // Split word into array, each index containing a single letter
@@ -117,10 +118,7 @@ var refactorNumberDecimals = function(numValue, numDecimals) {
 // Function to determine if first number is greater than second and if third is within the first and second
 var percentageFuzzyMatch = function(firstNum, secondNum, percentage) {
     var comparisonString = "",
-        comparison = 0.0;
-
-    // Get the percentage of the second number
-    comparison = secondNum * (percentage / 100);
+        comparison = secondNum * (percentage / 100);
 
     if (firstNum > secondNum) {
         comparisonString = firstNum + " is greater than " + secondNum;
@@ -151,7 +149,7 @@ var getTimeDifference = function(firstData, secondData, hoursOrDays) {
 var getStringAsInteger = function(strValue) {
     var isNumber = false,
         number = 0;
-        
+
     return number;
 };
 
@@ -174,7 +172,7 @@ var getNextHighestArrayNumber = function(argArray, highestNum) {
 // Function to get the total number of Numbers in a given array
 var getTotalNumbersInArray = function(argArray) {
     var totalNumbers = 0;
-    
+
     return totalNumbers;
 };
 
