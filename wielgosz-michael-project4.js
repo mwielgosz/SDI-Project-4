@@ -14,12 +14,12 @@ var telephoneNumberReturn,
     refactorNumberDecimals,
     percentageFuzzyMatchReturn,
     timeDifferenceReturn,
-    stringAsIntegerReturn,
+    stringAsNumberReturn,
     nextHighestArrayNumberReturn,
     totalNumbersInArrayReturn,
     objectsByKeyReturn;
 
-//String Functions
+// String Functions
 
 
 // Function to determine if String is in telephons number format: "123-456-789"
@@ -146,9 +146,12 @@ var getTimeDifference = function(firstData, secondData, hoursOrDays) {
 };
 
 // Function to return a String number as Number
-var getStringAsInteger = function(strValue) {
-    var isNumber = false,
-        number = 0;
+var getStringAsNumber = function(strValue) {
+    var number = parseFloat(strValue);
+
+        if (isNaN(number)) {
+            number = strValue + " is not a valid number";
+        }
 
     return number;
 };
@@ -157,7 +160,7 @@ var getStringAsInteger = function(strValue) {
 
 // Function to get the next largest number in an array as determined by the input
 var getNextHighestArrayNumber = function(argArray, highestNum) {
-    var returnNumber = 0;
+    var returnNumber = -1;
 
     for(var i=0; i < argArray.length; i++) {
         if (argArray[i] > highestNum) {
@@ -227,7 +230,7 @@ refactorNumberDecimalsReturn = refactorNumberDecimals(1.23456789, 3);
 console.log("Refactored decimal number: " + refactorNumberDecimalsReturn);
 
 // percentageFuzzyMatch(firstNum, secondNum, percentage)
-console.log("\n percentageFuzzyMatch Function:");
+console.log("\npercentageFuzzyMatch Function:");
 percentageFuzzyMatchReturn = percentageFuzzyMatch(5, 10, 50);
 console.log(percentageFuzzyMatchReturn);
 percentageFuzzyMatchReturn = percentageFuzzyMatch(488, 245, 200);
@@ -235,7 +238,12 @@ console.log(percentageFuzzyMatchReturn);
 percentageFuzzyMatchReturn = percentageFuzzyMatch(50, 50, 25);
 console.log(percentageFuzzyMatchReturn);
 
-
+// getStringAsNumber(strValue) Function
+console.log("\ngetStringAsNUmber Function:");
+stringAsNumberReturn = getStringAsNumber("12.34");
+console.log("The returned number is: " + stringAsNumberReturn);
+stringAsNumberReturn = getStringAsNumber("Full Sail University");
+console.log("The returned number is: " + stringAsNumberReturn);
 
 // getNextHighestArrayNumber(argArray, highestNum)
 console.log("\ngetNextHighestArrayNumber Function:");
