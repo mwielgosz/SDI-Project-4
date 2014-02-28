@@ -206,11 +206,15 @@ var getTotalOfNumbersInArray = function(argArray) {
 };
 
 // Function to return the Objects in an array determined by a given key
-var getObjectsByKey = function(objectAray, key) {
-    var returnArray = [];
+var getObjectsByKey = function (objectArray, key) {
 
-    return returnArray;
+    function compare(a, b) {
+        return a[key] - b[key];
+    }
+
+    return objectArray.sort(compare);
 };
+
 
 
 // Main Code
@@ -285,3 +289,8 @@ console.log("The next highest number in the provided array is: " + nextHighestAr
 console.log("\ngetTotalOfNumbersInArray Function:");
 totalOfNumbersInArrayReturn = getTotalOfNumbersInArray([1, "pickles", 3, "onions", 5, "10", 6, "SDI"]);
 console.log("Total of the numbers in array: " + totalOfNumbersInArrayReturn);
+
+// getObjectsByKey(objectArray, key)
+console.log("\ngetObjectsByKey Function:");
+objectsByKeyReturn = getObjectsByKey([{a:2},{a:3},{a:1},{b:3},{b:2},{a:4},{b:1},{b:4}], "a");
+console.log("Returned objects by key: " + objectsByKeyReturn);
