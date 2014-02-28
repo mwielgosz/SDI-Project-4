@@ -52,7 +52,7 @@ var isEmailAddress = function(strValue) {
 };
 
 // Function to determine if String is in URL format: "http://" or "https://"
-var isURL = function(strValue) {
+var isURL = function(strValue) {    // MAKEUP: use of OR comparison, deliverable 2
 
     if (strValue.substring(0, 7) === "http://" || strValue.substring(0, 8) === "https://") {
         return true;
@@ -193,7 +193,7 @@ var getNextHighestArrayNumber = function(argArray, highestNum) {
 };
 
 // Function to get the total value of the numbers in a given array that are of the Number data type
-var getTotalOfNumbersInArray = function(argArray) {
+var getTotalOfNumbersInArray = function(argArray) {     // MAKEUP: use of NOT and AND comparison, deliverable 2
     var totalNumValues = 0;
 
     for (i=0; i < argArray.length; i++) {
