@@ -16,7 +16,7 @@ var telephoneNumberReturn,
     timeDifferenceReturn,
     stringAsNumberReturn,
     nextHighestArrayNumberReturn,
-    totalNumbersInArrayReturn,
+    totalOfNumbersInArrayReturn,
     objectsByKeyReturn;
 
 // String Functions
@@ -82,7 +82,7 @@ var capitalizeString = function(strValue) {     // MAKEUP: nested loops, deliver
         }
 
         // If not last word, add space at end of each word
-        if (i < (wordArray.length -1)) {
+        if (i < (wordArray.length - 1)) {
             finalString += " ";
         }
     }
@@ -172,11 +172,18 @@ var getNextHighestArrayNumber = function(argArray, highestNum) {
     return returnNumber;
 };
 
-// Function to get the total number of Numbers in a given array
-var getTotalNumbersInArray = function(argArray) {
-    var totalNumbers = 0;
+// Function to get the total value of the numbers in a given array that are of the Number data type
+var getTotalOfNumbersInArray = function(argArray) {
+    var totalNumValues = 0;
 
-    return totalNumbers;
+    for (i=0; i < argArray.length; i++) {
+        if (!isNaN(argArray[i]) && typeof(argArray[i]) == "number") {
+            console.log(argArray[i]);
+            totalNumValues += argArray[i];
+        }
+    }
+
+    return totalNumValues;
 };
 
 // Function to return the Objects in an array determined by a given key
@@ -249,3 +256,8 @@ console.log("The returned number is: " + stringAsNumberReturn);
 console.log("\ngetNextHighestArrayNumber Function:");
 nextHighestArrayNumberReturn = getNextHighestArrayNumber([0, 2, 4, 7, 9, 14, 15, 22, 25, 30], 10);
 console.log("The next highest number in the provided array is: " + nextHighestArrayNumberReturn);
+
+// getTotalOfNumbersInArray(argArray)
+console.log("\ngetTotalOfNumbersInArray Function:");
+totalOfNumbersInArrayReturn = getTotalOfNumbersInArray([1, "pickles", 3, "onions", 5, "10", 6, "SDI"]);
+console.log("Total of the numbers in array: " + totalOfNumbersInArrayReturn);
