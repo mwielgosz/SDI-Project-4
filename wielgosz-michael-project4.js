@@ -137,11 +137,31 @@ var percentageFuzzyMatch = function(firstNum, secondNum, percentage) {
     return comparisonString;
 };
 
-
 // Function to get the difference in time and return values in hours or days
-var getTimeDifference = function(firstData, secondData, hoursOrDays) {
-    var returnTime = "";
-    
+var getTimeDifference = function(firstDate, secondDate, hoursOrDays) {
+    var returnTime,
+        date1 = new Date(firstDate).getTime(),
+        date2 = new Date(secondDate).getTime(),
+        day = 1000 * 60 * 60 * 24,
+        difference = 0,
+        converted = 0;
+
+    if (date1 > date2) {
+        difference = date1 - date2;
+    } else {
+        difference = date2 - date1;
+    }
+
+    converted = Math.round(difference / day);
+
+    if (hoursOrDays === "hours") {
+        returnTime = converted * 24;
+    } else if (hoursOrDays === "days") {
+        returnTime = converted;
+    } else {
+        returnTime = "Invalid input for returning in hours or days";
+    }
+
     return returnTime;
 };
 
@@ -178,7 +198,6 @@ var getTotalOfNumbersInArray = function(argArray) {
 
     for (i=0; i < argArray.length; i++) {
         if (!isNaN(argArray[i]) && typeof(argArray[i]) == "number") {
-            console.log(argArray[i]);
             totalNumValues += argArray[i];
         }
     }
@@ -244,6 +263,11 @@ percentageFuzzyMatchReturn = percentageFuzzyMatch(488, 245, 200);
 console.log(percentageFuzzyMatchReturn);
 percentageFuzzyMatchReturn = percentageFuzzyMatch(50, 50, 25);
 console.log(percentageFuzzyMatchReturn);
+
+// getTimeDifference(firstDate, secondDate, hoursOrDays)
+console.log("\ngetTimeDifference Function:");
+timeDifferenceReturn = getTimeDifference("Janurary 1 2014", "Feburary 27 2014", "days");
+console.log("The difference between the two dates is: " + timeDifferenceReturn);
 
 // getStringAsNumber(strValue) Function
 console.log("\ngetStringAsNUmber Function:");
